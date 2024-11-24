@@ -1,3 +1,27 @@
-**/node_modules
-dist/
-**/**/*.log
+# compiled output
+/dist
+
+# logs
+logs
+*.log
+npm-debug.log*
+
+# OS generated files
+.DS_Store
+
+# IDE generated files
+.idea
+.vscode
+
+# OS generated files
+.DS_Store
+
+# Tests
+/coverage
+/.nyc_output
+
+# Dependency directories
+/node_modules
+
+# Environment variables
+.env

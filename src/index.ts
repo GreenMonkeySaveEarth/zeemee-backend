@@ -1,12 +1,12 @@
-import logger from 'jet-logger';
+require('module-alias/register');
+import dotenv from 'dotenv';
+import logger from './logger';
+import { startServer } from './server';
 
-import EnvVars from '@src/common/EnvVars';
-import server from './server';
+// Load environment variables
+dotenv.config();
 
-
-// **** Run **** //
-
-const SERVER_START_MSG = ('Express server started on port: ' + 
-  EnvVars.Port.toString());
-
-server.listen(EnvVars.Port, () => logger.info(SERVER_START_MSG));
+// Start the server
+startServer().catch((error) => {
+	logger.error('Error in starting application', error);
+});
