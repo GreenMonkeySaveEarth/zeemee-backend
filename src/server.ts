@@ -7,6 +7,24 @@ import logger from './logger';
 import connection from './models/db';
 import drinkRouter from './routes/drink';
 
+/**
+ * Starts the Express server.
+ *
+ * This function initializes the Express application, sets up middleware,
+ * configures routes, connects to the database, and starts the HTTP server.
+ * It also handles graceful shutdown on receiving a SIGTERM signal.
+ *
+ * @returns {Promise<void>} A promise that resolves when the server is started.
+ *
+ * @throws Will throw an error if there is an issue synchronizing the database.
+ *
+ * @example
+ * startServer().then(() => {
+ *   console.log('Server started successfully');
+ * }).catch((error) => {
+ *   console.error('Failed to start server:', error);
+ * });
+ */
 export async function startServer(): Promise<void> {
 	// Initialize the express app
 	const app = express();
@@ -19,7 +37,7 @@ export async function startServer(): Promise<void> {
 	app.use(express.urlencoded({ extended: true })); // For parsing application/x-www-form-urlencoded
 
 	// Routes setup
-	app.use('/drinks/', drinkRouter);
+	app.use('/api/drinks', drinkRouter);
 
 	// Database connection
 	try {
