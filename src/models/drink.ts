@@ -11,6 +11,8 @@ export interface IDrink {
 	instructions: string;
 	image: string;
 	ingredients: string[];
+	createdAt: Date;
+	updatedAt: Date;
 }
 
 class Drink extends Model {
@@ -20,6 +22,8 @@ class Drink extends Model {
 	public container!: string;
 	public instructions!: string;
 	public image!: string;
+	public readonly createdAt!: Date;
+	public readonly updatedAt!: Date;
 }
 
 Drink.init(
@@ -49,6 +53,16 @@ Drink.init(
 			type: DataTypes.STRING,
 			allowNull: true,
 		},
+		createdAt: {
+			type: DataTypes.DATE,
+			allowNull: false,
+			defaultValue: DataTypes.NOW,
+		},
+		updatedAt: {
+			type: DataTypes.DATE,
+			allowNull: false,
+			defaultValue: DataTypes.NOW,
+		},
 	},
 	{
 		sequelize,
@@ -59,6 +73,8 @@ Drink.init(
 Drink.hasMany(Ingredient, {
 	sourceKey: 'id',
 	foreignKey: 'drinkId',
+	as: 'ingredients',
+	onDelete: 'CASCADE', // Add this line to handle cascade delete
 });
 
 export default Drink;

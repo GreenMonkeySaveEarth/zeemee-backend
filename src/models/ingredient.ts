@@ -7,6 +7,8 @@ export interface IIngredient {
 	drinkId: UUID;
 	name: string;
 	measurement: string;
+	createdAt: Date;
+	updatedAt: Date;
 }
 
 class Ingredient extends Model {
@@ -14,6 +16,8 @@ class Ingredient extends Model {
 	public drinkId!: UUID;
 	public name!: string;
 	public measurement!: string;
+	public readonly createdAt!: Date;
+	public readonly updatedAt!: Date;
 }
 
 // ToDo: need to update the model schema
@@ -27,6 +31,11 @@ Ingredient.init(
 		drinkId: {
 			type: DataTypes.UUID,
 			allowNull: false,
+			references: {
+				model: 'drinks',
+				key: 'id',
+			},
+			onDelete: 'CASCADE', // Add this line to handle cascade delete
 		},
 		name: {
 			type: DataTypes.STRING,
@@ -35,6 +44,16 @@ Ingredient.init(
 		measurement: {
 			type: DataTypes.STRING,
 			allowNull: false,
+		},
+		createdAt: {
+			type: DataTypes.DATE,
+			allowNull: false,
+			defaultValue: DataTypes.NOW,
+		},
+		updatedAt: {
+			type: DataTypes.DATE,
+			allowNull: false,
+			defaultValue: DataTypes.NOW,
 		},
 	},
 	{

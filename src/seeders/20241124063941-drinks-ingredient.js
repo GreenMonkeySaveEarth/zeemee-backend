@@ -33,7 +33,14 @@ module.exports = {
 			const id = uuidv4();
 			const drinkId = await queryInterface.bulkInsert(
 				'Drinks',
-				[{ ...drinkData, id }],
+				[
+					{
+						...drinkData,
+						id,
+						createdAt: new Date(),
+						updatedAt: new Date(),
+					},
+				],
 				{ returning: true },
 			);
 			if (ingredients && ingredients.length > 0) {
@@ -41,6 +48,8 @@ module.exports = {
 					id: uuidv4(),
 					...ingredient,
 					drinkId: id,
+					createdAt: new Date(),
+					updatedAt: new Date(),
 				}));
 
 				await queryInterface.bulkInsert('Ingredients', ingredientData, {});

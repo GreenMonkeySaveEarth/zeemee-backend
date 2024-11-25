@@ -23,6 +23,7 @@ module.exports = {
 					model: 'drinks',
 					key: 'id',
 				},
+				onDelete: 'CASCADE',
 			},
 			name: {
 				type: Sequelize.STRING,
@@ -31,6 +32,14 @@ module.exports = {
 			measurement: {
 				type: Sequelize.STRING,
 				allowNull: false,
+			},
+			createdAt: {
+				allowNull: false,
+				type: Sequelize.DATE,
+			},
+			updatedAt: {
+				allowNull: false,
+				type: Sequelize.DATE,
 			},
 		});
 	},
