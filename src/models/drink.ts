@@ -61,8 +61,4 @@ Drink.hasMany(Ingredient, {
 	foreignKey: 'drinkId',
 });
 
-// (async () => {
-//   await sequelize.sync();
-// })();
-
 export default Drink;

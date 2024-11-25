@@ -36,7 +36,10 @@
     "prepare": "husky install",
     "migrate:up": "npx sequelize-cli db:migrate",
     "migrate:undo": "npx sequelize-cli db:migrate:undo",
-    "migrate:generate": "npx sequelize-cli migration:generate --name"
+    "migrate:generate": "npx sequelize-cli migration:generate --name",
+    "migrate:generate:seed": "npx sequelize-cli seed:generate --name",
+    "migrate:seed:up": "npx sequelize-cli db:seed:all",
+    "migrate:seed:undo": "npx sequelize-cli db:seed:undo"
   },
   "lint-staged": {
     "*.{js,ts,tsx}": [
