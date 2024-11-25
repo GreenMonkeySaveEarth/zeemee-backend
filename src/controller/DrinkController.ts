@@ -17,10 +17,15 @@ class DrinkController {
 	 *
 	 */
 	public async getDrinkById(req: Request, res: Response): Promise<void> {
-		const drink = await Drink.findByPk(req.params.id, {
-			include: ['ingredients'],
-		});
-		res.status(200).send({ drinks: [drink] });
+		const drinkId = req.query.id as string;
+		if (!drinkId) {
+			res.status(400).send('ID is required');
+		} else {
+			const drink = await Drink.findByPk(drinkId, {
+				include: ['ingredients'],
+			});
+			res.status(200).send({ drinks: [drink] });
+		}
 	}
 
 	/**
@@ -54,12 +59,16 @@ class DrinkController {
 		const limit = parseInt(req.query.limit as string) || 10;
 		const query = (req.query.query as string) || '';
 
+		const whereClause = query
+			? {
+					name: {
+						[Op.like]: `%${query}%`,
+					},
+				}
+			: {};
+
 		const drinks = await Drink.findAll({
-			where: {
-				name: {
-					[Op.like]: `%${query}%`,
-				},
-			},
+			where: whereClause,
 			include: ['ingredients'],
 			offset: index,
 			limit: limit,

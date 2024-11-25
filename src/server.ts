@@ -46,7 +46,6 @@ export async function startServer(): Promise<void> {
 		logger.info('Database synchronized');
 	} catch (error) {
 		logger.error('Error synchronizing the database:', error);
-		throw error;
 	}
 
 	// Start the server

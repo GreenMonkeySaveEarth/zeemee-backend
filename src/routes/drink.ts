@@ -28,17 +28,17 @@ router.get('/search', (req, res) => {
 		res.status(500).send(error.message);
 	});
 });
-
 /**
- * GET /:id
+ * GET /api/detail
  * @summary Retrieves a drink by its ID.
  * @param {express.Request} req - The request object.
  * @param {express.Response} res - The response object.
  * @returns {void}
  * @throws {Error} If there is an error during the retrieval operation.
  * @description This route handles retrieving a specific drink by its ID. It uses rate limiting to prevent abuse.
+ * The ID should be provided as a query parameter.
  */
-router.get('/:id', useRateLimiter, (req, res) => {
+router.get('/detail', useRateLimiter, (req, res) => {
 	drinkController.getDrinkById(req, res).catch((error) => {
 		res.status(500).send(error.message);
 	});
