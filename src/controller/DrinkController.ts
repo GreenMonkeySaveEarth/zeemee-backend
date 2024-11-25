@@ -17,8 +17,10 @@ class DrinkController {
 	 *
 	 */
 	public async getDrinkById(req: Request, res: Response): Promise<void> {
-		const drink = await Drink.findByPk(req.params.id);
-		res.status(200).send(drink);
+		const drink = await Drink.findByPk(req.params.id, {
+			include: ['ingredients'],
+		});
+		res.status(200).send({ drinks: [drink] });
 	}
 
 	/**
@@ -58,11 +60,12 @@ class DrinkController {
 					[Op.like]: `%${query}%`,
 				},
 			},
+			include: ['ingredients'],
 			offset: index,
 			limit: limit,
 			order: [['name', 'ASC']],
 		});
-		res.status(200).send(drinks);
+		res.status(200).send({ drinks: drinks });
 	}
 }
 

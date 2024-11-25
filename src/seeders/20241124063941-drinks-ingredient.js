@@ -30,13 +30,13 @@ module.exports = {
 		for (const recipe of data) {
 			const { ingredients, ...drinkData } = recipe;
 			// Auto-generate a UUID for each drink since we're using UUIDs as primary keys and sqlite doesn't support UUIDs
-			const id = uuidv4();
-			const drinkId = await queryInterface.bulkInsert(
+			const drinkId = uuidv4();
+			await queryInterface.bulkInsert(
 				'Drinks',
 				[
 					{
 						...drinkData,
-						id,
+						id: drinkId,
 						createdAt: new Date(),
 						updatedAt: new Date(),
 					},
@@ -47,7 +47,7 @@ module.exports = {
 				const ingredientData = ingredients.map((ingredient) => ({
 					id: uuidv4(),
 					...ingredient,
-					drinkId: id,
+					drinkId,
 					createdAt: new Date(),
 					updatedAt: new Date(),
 				}));

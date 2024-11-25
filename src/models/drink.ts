@@ -71,7 +71,6 @@ Drink.init(
 	},
 );
 Drink.hasMany(Ingredient, {
-	sourceKey: 'id',
 	foreignKey: 'drinkId',
 	as: 'ingredients',
 	onDelete: 'CASCADE', // Add this line to handle cascade delete
