@@ -67,14 +67,15 @@ class DrinkController {
 				}
 			: {};
 
-		const drinks = await Drink.findAll({
+		const { count, rows } = await Drink.findAndCountAll({
 			where: whereClause,
 			include: ['ingredients'],
 			offset: index,
 			limit: limit,
+			distinct: true,
 			order: [['name', 'ASC']],
 		});
-		res.status(200).send({ drinks: drinks });
+		res.status(200).send({ totalCount: count, drinks: rows });
 	}
 }
 
