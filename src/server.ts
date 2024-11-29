@@ -37,12 +37,12 @@ export async function startServer(): Promise<void> {
 	app.use(express.urlencoded({ extended: true })); // For parsing application/x-www-form-urlencoded
 
 	// Routes setup
-	app.use('/api/drinks', drinkRouter);
+	app.use('/api', drinkRouter);
 
 	// Database connection
 	try {
 		logger.info('Database connecting');
-		await connection.sync({ alter: process.env.NODE_ENV === 'local' });
+		await connection.sync({ alter: config.nodeEnv === 'local' });
 		logger.info('Database synchronized');
 	} catch (error) {
 		logger.error('Error synchronizing the database:', error);

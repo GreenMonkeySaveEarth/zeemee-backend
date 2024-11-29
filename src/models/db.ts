@@ -1,9 +1,10 @@
 import { Sequelize } from 'sequelize';
+import config from '../config/config';
 
 const sequelize = new Sequelize({
 	dialect: 'sqlite',
 	logging: console.log,
-	storage: '/Users/chang-yunglin/Documents/zeewee-db',
+	storage: config.dbStorage,
 });
 
 export default sequelize;
