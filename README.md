@@ -69,29 +69,22 @@ This project is an API server for managing drinks and their ingredients. It is b
 	- Use feature flags to enable or disable features without deploying new code.
 	- Implement a strategy for gradual feature rollouts and A/B testing.
 
-5. Server Side Rendering (SSR):
-	- Implement SSR to improve initial page load times and enhance SEO.
-	- Use frameworks like Next.js or Nuxt.js to facilitate SSR in your application.
-	- Optimize server-rendered pages by minimizing the amount of JavaScript sent to the client.
-	- Implement caching strategies for server-rendered pages to reduce server load and improve response times.
-	- Ensure that SSR pages are properly hydrated on the client side to maintain interactivity.
-
-6. Tracking:
+5. Tracking:
 	- Integrate with third-party monitoring and tracking services such as NewRelic to monitor application performance.
 	- Set up custom metrics and alerts to track key performance indicators (KPIs) and detect anomalies.
 	- Use distributed tracing to gain insights into request flows and identify performance bottlenecks.
 
-7. Add more comprehensive error handling:
+6. Add more comprehensive error handling:
 	- Implement a global error handling middleware to catch and handle errors consistently.
 	- Use structured error responses to provide meaningful error messages to clients.
 	- Log errors with sufficient context to facilitate debugging and issue resolution.
 
-8. Improve test coverage and add integration tests:
+7. Improve test coverage and add integration tests:
 	- Write unit tests for functions to ensure they work as expected.
 	- Add integration tests to verify the interactions between different parts of the system.
 	- Use test coverage tools to identify untested code paths and improve overall test coverage.
 
-9. Notifications
+8. Notifications
 	- Integrate with communication tools like Slack to receive instant notifications for any issues on the API server.
 	- Configure appropriate error levels to ensure critical issues are promptly addressed.
 
