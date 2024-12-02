@@ -1,5 +1,7 @@
 # Drink API Server
 
+This project is an implementation of the [Zeemee fullstack exercise example with design](https://github.com/zeemee/fullstack-code-sample-with-design)
+
 This project is an API server for managing drinks and their ingredients. It is built using Node.js, Express, and Sequelize with SQLite as the database.
 
 ## Table of Contents
