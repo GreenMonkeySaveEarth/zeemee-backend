@@ -16,7 +16,7 @@ This project is an API server for managing drinks and their ingredients. It is b
 
 1. Clone the repository:
    ```sh
-   git clone git@github.com:GreenMonkeySaveEarth/zeewee-backend.git
+   git clone git@github.com:GreenMonkeySaveEarth/zeemee-backend.git
 	 ```
 2. Install dependencies:
 	```npm install```
@@ -24,7 +24,7 @@ This project is an API server for managing drinks and their ingredients. It is b
 	```
 	PORT=4000
 	NODE_ENV=local
-	DB_STORAGE=/Users/XXXX/Documents/zeewee-db <--place to put the SQLite file>
+	DB_STORAGE=/Users/XXXX/Documents/zeemee-db <--place to put the SQLite file>
 	```
 
 ## Usage
