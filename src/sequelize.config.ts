@@ -1,4 +1,4 @@
-import dbConfig from './config/dbSetUp';
+import dbConfig from './models/db';
 
 const config = {
 	local: {
